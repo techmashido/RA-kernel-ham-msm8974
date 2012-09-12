@@ -303,10 +303,6 @@ config CPU_FREQ_GOV_ADAPTIVE
 	tristate "'adaptive' cpufreq policy governor"
 	help
 
-config CPU_FREQ_GOV_BLU_ACTIVE
-	tristate "'blu_active' cpufreq governor"
-	depends on CPU_FREQ
-
 config CPU_FREQ_GOV_BARRY_ALLEN
 	tristate "'barry_allen' cpufreq policy governor"
 	help
