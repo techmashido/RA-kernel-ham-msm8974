@@ -1077,6 +1077,10 @@ static int mdss_dsi_event_handler(struct mdss_panel_data *pdata,
 #endif
 >>>>>>> 300ef9e... drivers: Add state notifier driver
 		break;
+#ifdef CONFIG_STATE_NOTIFIER
+		if (!use_fb_notifier)
+			state_notifier_call_chain(STATE_NOTIFIER_SUSPEND, NULL);
+#endif
 	case MDSS_EVENT_CONT_SPLASH_FINISH:
 		if (ctrl_pdata->off_cmds.link_state == DSI_LP_MODE)
 			rc = mdss_dsi_blank(pdata);
