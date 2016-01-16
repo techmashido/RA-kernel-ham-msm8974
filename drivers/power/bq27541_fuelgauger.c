@@ -137,9 +137,6 @@ static void bq27541_set_suspend_state(struct bq27541_device_info *di,
 	spin_lock_irqsave(&i2c_pm_lock, flags);
 	di->suspended = suspended;
 	spin_unlock_irqrestore(&i2c_pm_lock, flags);
-
-	if (!suspended)
-		complete_all(&i2c_resume_done);
 }
 
 static void bq27541_wait_for_i2c(void)
@@ -218,7 +215,7 @@ static int bq27541_battery_temperature(struct bq27541_device_info *di)
 
 	di->old_data->temp = temp - ZERO_DEGREES_CELSIUS_IN_TENTH_KELVIN;
 
-	return temp - ZERO_DEGREES_CELSIUS_IN_TENTH_KELVIN;
+	return di->old_data->temp;
 }
 
 static int bq27541_battery_voltage(struct bq27541_device_info *di)
@@ -233,7 +230,7 @@ static int bq27541_battery_voltage(struct bq27541_device_info *di)
 
 	di->old_data->mvolts = volt * 1000;
 
-	return volt * 1000;
+	return di->old_data->mvolts;
 }
 
 static int bq27541_average_current(struct bq27541_device_info *di)
@@ -252,7 +249,7 @@ static int bq27541_average_current(struct bq27541_device_info *di)
 
 	di->old_data->curr = -curr;
 
-	return -curr;
+	return di->old_data->curr;
 }
 
 static int bq27541_battery_soc(struct bq27541_device_info *di)
@@ -304,7 +301,7 @@ static int bq27541_battery_soc(struct bq27541_device_info *di)
 
 	di->old_data->soc = soc;
 
-	return soc;
+	return di->old_data->soc;
 }
 
 /* I2C-specific code */
@@ -482,6 +479,8 @@ static int bq27541_battery_remove(struct i2c_client *client)
 static int bq27541_battery_resume(struct device *dev)
 {
 	bq27541_set_suspend_state(bq27541_di, false);
+
+	complete_all(&i2c_resume_done);
 
 	return 0;
 }
