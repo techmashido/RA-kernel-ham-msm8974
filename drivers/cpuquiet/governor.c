@@ -171,12 +171,12 @@ void cpuquiet_touch_event(void)
 static void cpuquiet_input_event(struct input_handle *handle, unsigned int type,
 		unsigned int code, int value) {
 	if (type == EV_SYN && code == SYN_REPORT) {
-		cpuquiet_touch_event();
+ 		cpuquiet_touch_event();
 	}
 }
-
+ 
 static struct input_mediator_handler cpuquiet_input_mediator_handler = {
-	.event = cpuquiet_input_event,
+ 	.event = cpuquiet_input_event,
 	};
 
 #else
