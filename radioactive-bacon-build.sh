@@ -29,11 +29,11 @@ export KBUILD_BUILD_HOST=${HOST}
 
 # Paths
 KERNEL_DIR=`pwd`
-REPACK_DIR="${HOME}/Android/Radioactive"
-MODULES_DIR="${HOME}/Android/Radioactive/modules"
-ZIP_MOVE="${HOME}/Android/ZUK"
-ZIMAGE_DIR="${HOME}/Android/Radioactive"
-
+REPACK_DIR="${HOME}/Android/AK-OnePone-AnyKernel2"
+PATCH_DIR="${HOME}/Android/AK-OnePone-AnyKernel2/patch"
+MODULES_DIR="${HOME}/Android/AK-OnePone-AnyKernel2/modules"
+ZIP_MOVE="${HOME}/Android/releases"
+ZIMAGE_DIR="${HOME}/Android/AK-OnePone-AnyKernel2"
 # Functions
 function clean_all {
 		rm -rf $MODULES_DIR/*
