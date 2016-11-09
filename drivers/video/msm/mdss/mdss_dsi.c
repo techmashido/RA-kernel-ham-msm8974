@@ -1065,17 +1065,8 @@ static int mdss_dsi_event_handler(struct mdss_panel_data *pdata,
 	case MDSS_EVENT_PANEL_OFF:
 		ctrl_pdata->ctrl_state &= ~CTRL_STATE_MDP_ACTIVE;
 		if (ctrl_pdata->off_cmds.link_state == DSI_LP_MODE)
-<<<<<<< HEAD
 			rc = mdss_dsi_blank(pdata);
 		rc = mdss_dsi_off(pdata);
-=======
-			rc = mdss_dsi_blank(pdata, power_state);
-		rc = mdss_dsi_off(pdata, power_state);
-#ifdef CONFIG_STATE_NOTIFIER
-		if (!use_fb_notifier)
-			state_notifier_call_chain(STATE_NOTIFIER_SUSPEND, NULL);
-#endif
->>>>>>> 300ef9e... drivers: Add state notifier driver
 		break;
 #ifdef CONFIG_STATE_NOTIFIER
 		if (!use_fb_notifier)
