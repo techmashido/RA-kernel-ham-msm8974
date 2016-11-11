@@ -15,8 +15,8 @@ DTBIMAGE="dtb"
 DEFCONFIG="radioactive_defconfig"
 
 # Kernel Details
-BASE_RADIOACTIVE_VER="Nuclear"
-VER="_V2.3"
+BASE_RADIOACTIVE_VER="Radioactive-Reborn"
+VER="_V3.0"
 RADIOACTIVE_VER="$BASE_RADIOACTIVE_VER$VER"
 
 # Vars
