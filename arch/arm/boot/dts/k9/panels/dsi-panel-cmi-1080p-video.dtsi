@@ -12,6 +12,7 @@
 
 &mdss_mdp {
 		dsi_cmi_nt35532_vid: qcom,mdss_dsi_cmi_nt35532_1080p_video {
+		qcom,cont-splash-enabled;
 		qcom,mdss-dsi-panel-name = "CMI nt35532 1080p video mode dsi panel";
 		qcom,mdss-dsi-panel-controller = <&mdss_dsi0>;
 		qcom,mdss-dsi-panel-type = "dsi_video_mode";
