@@ -21,7 +21,7 @@ RADIOACTIVE_VER="$BASE_RADIOACTIVE_VER$VER"
 
 # Vars
 export LOCALVERSION=~`echo $RADIOACTIVE_VER`
-export CROSS_COMPILE=${HOME}/Android/toolchains/linaro4.9/bin/arm-eabi-
+export CROSS_COMPILE=${HOME}/Android/toolchains/uber4.9/bin/arm-eabi-
 export ARCH=arm
 export SUBARCH=arm
 export KBUILD_BUILD_USER=${USER}
@@ -29,11 +29,11 @@ export KBUILD_BUILD_HOST=${HOST}
 
 # Paths
 KERNEL_DIR=`pwd`
-REPACK_DIR="${HOME}/Android/AK-OnePone-AnyKernel2"
-PATCH_DIR="${HOME}/Android/AK-OnePone-AnyKernel2/patch"
-MODULES_DIR="${HOME}/Android/AK-OnePone-AnyKernel2/modules"
-ZIP_MOVE="${HOME}/Android/releases"
-ZIMAGE_DIR="${HOME}/Android/AK-OnePone-AnyKernel2"
+REPACK_DIR="${HOME}/android/radioactive-anyKernel2"
+PATCH_DIR="${HOME}/android/radioactive-anyKernel2"
+MODULES_DIR="${HOME}/android/radioactive-anyKernel2/modules"
+ZIP_MOVE="${HOME}/android/releases"
+ZIMAGE_DIR="${HOME}/android/radioactive-anyKernel2"
 # Functions
 function clean_all {
 		rm -rf $MODULES_DIR/*
