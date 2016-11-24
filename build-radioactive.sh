@@ -16,12 +16,12 @@ DEFCONFIG="radioactive_defconfig"
 
 # Kernel Details
 BASE_RADIOACTIVE_VER="Radioactive-Reborn"
-VER="_V3.4"
+VER="_V3.5"
 RADIOACTIVE_VER="$BASE_RADIOACTIVE_VER$VER"
 
 # Vars
 export LOCALVERSION=~`echo $RADIOACTIVE_VER`
-export CROSS_COMPILE=${HOME}/android/toolchains/uber4.9/bin/arm-eabi-
+export CROSS_COMPILE=${HOME}/Android/toolchains/uber4.9/bin/arm-eabi-
 export ARCH=arm
 export SUBARCH=arm
 export KBUILD_BUILD_USER=${USER}
@@ -29,13 +29,15 @@ export KBUILD_BUILD_HOST=${HOST}
 
 # Paths
 KERNEL_DIR=`pwd`
-MODULES_DIR="${KERNEL_DIR}/modules"
-ZIP_MOVE="${KERNEL_DIR}/zip"
-
+REPACK_DIR="${HOME}/Android/AK-OnePone-AnyKernel2"
+PATCH_DIR="${HOME}/Android/AK-OnePone-AnyKernel2/patch"
+MODULES_DIR="${HOME}/Android/AK-OnePone-AnyKernel2/modules"
+ZIP_MOVE="${HOME}/Android/releases"
+ZIMAGE_DIR="${HOME}/Android/AK-OnePone-AnyKernel2"
 # Functions
 function clean_all {
 		rm -rf $MODULES_DIR/*
-		cd $KERNEL_DIR
+		cd $REPACK_DIR
 		rm -rf $KERNEL
 		rm -rf $DTBIMAGE
 		git reset --hard > /dev/null 2>&1
@@ -49,7 +51,7 @@ function make_kernel {
 		echo
 		make $DEFCONFIG
 		make $THREAD
-		cp -vr $KERNEL_DIR/$KERNEL $KERNEL_DIR
+		cp -vr $ZIMAGE_DIR/$KERNEL $REPACK_DIR
 }
 
 function make_modules {
@@ -58,11 +60,11 @@ function make_modules {
 }
 
 function make_dtb {
-		$KERNEL_DIR/tools/dtbToolCM -2 -o $KERNEL_DIR/$DTBIMAGE -s 2048 -p scripts/dtc/ arch/arm/boot/
+		$REPACK_DIR/tools/dtbToolCM -2 -o $REPACK_DIR/$DTBIMAGE -s 2048 -p scripts/dtc/ arch/arm/boot/
 }
 
 function make_zip {
-		cd $KERNEL_DIR
+		cd $REPACK_DIR
 		zip -r9 `echo $RADIOACTIVE_VER`.zip *
 		mv  `echo $RADIOACTIVE_VER`.zip $ZIP_MOVE
 		cd $KERNEL_DIR
@@ -117,7 +119,7 @@ echo
 while read -p "Do you want to build kernel (y/n)? " dchoice
 do
 case "$dchoice" in
-	y|Y )
+	y|Y)
 		make_kernel
 		make_dtb
 		make_modules
@@ -145,3 +147,4 @@ DATE_END=$(date +"%s")
 DIFF=$(($DATE_END - $DATE_START))
 echo "Time: $(($DIFF / 60)) minute(s) and $(($DIFF % 60)) seconds."
 echo
+
