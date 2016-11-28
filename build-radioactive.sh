@@ -16,12 +16,16 @@ DEFCONFIG="radioactive_defconfig"
 
 # Kernel Details
 BASE_RADIOACTIVE_VER="Radioactive-Reborn"
+<<<<<<< HEAD:radioactive-bacon-build.sh
+VER="_V3.7"
+=======
 VER="_V3.6"
+>>>>>>> cpuquiet:build-radioactive.sh
 RADIOACTIVE_VER="$BASE_RADIOACTIVE_VER$VER"
 
 # Vars
 export LOCALVERSION=~`echo $RADIOACTIVE_VER`
-export CROSS_COMPILE=${HOME}/Android/toolchains/uber4.9/bin/arm-eabi-
+export CROSS_COMPILE=${HOME}/Android/toolchains/linaro4.9/bin/arm-eabi-
 export ARCH=arm
 export SUBARCH=arm
 export KBUILD_BUILD_USER=${USER}
