@@ -16,7 +16,11 @@ DEFCONFIG="radioactive_defconfig"
 
 # Kernel Details
 BASE_RADIOACTIVE_VER="Radioactive-Reborn"
+<<<<<<< HEAD:radioactive-bacon-build.sh
 VER="_V3.7"
+=======
+VER="_V3.6"
+>>>>>>> cpuquiet:build-radioactive.sh
 RADIOACTIVE_VER="$BASE_RADIOACTIVE_VER$VER"
 
 # Vars
