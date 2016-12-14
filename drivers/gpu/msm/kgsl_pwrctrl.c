@@ -1095,14 +1095,14 @@ int kgsl_pwrctrl_init(struct kgsl_device *device)
 	 * Maximum -> max_pwrlevel -> 578MHz
 	 * Initial -> init_pwrlevel -> 578MHz
 	 * Active  -> active_pwrlevel -> 330MHz
-	 * Minimum -> min_pwrlevel -> 100MHz
+	 * Minimum -> min_pwrlevel -> 200MHz
 	 */
 	pwr->max_pwrlevel = 0; /* 578MHz */
-	pwr->min_pwrlevel = pdata->num_levels - 2; /* 100MHz */
+	pwr->min_pwrlevel = pdata->num_levels - 2; /* 200MHz */
 	pwr->thermal_pwrlevel = 0; /* 578MHz */
 
 	pwr->active_pwrlevel = pdata->num_levels - 4; /* 330MHz */
-	pwr->default_pwrlevel = pwr->min_pwrlevel; /* 100MHz */
+	pwr->default_pwrlevel = pwr->min_pwrlevel; /* 200MHz */
 	pwr->init_pwrlevel = pwr->max_pwrlevel; /* 578MHz */
 	for (i = 0; i < pdata->num_levels; i++) {
 		pwr->pwrlevels[i].gpu_freq =
