@@ -60,6 +60,9 @@ module_param(input_boost_ms, uint, 0644);
 static bool hotplug_boost = 1;
 module_param(hotplug_boost, bool, 0644);
 
+bool wakeup_boost;
+module_param(wakeup_boost, bool, 0644);
+
 #ifdef CONFIG_LCD_NOTIFY
 bool wakeup_boost;
 module_param(wakeup_boost, bool, 0644);
