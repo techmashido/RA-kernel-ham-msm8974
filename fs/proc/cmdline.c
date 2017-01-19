@@ -8,7 +8,7 @@ static char new_command_line[COMMAND_LINE_SIZE];
 
 static int cmdline_proc_show(struct seq_file *m, void *v)
 {
-	seq_printf(m, "%s\n", new_command_line);
+	seq_printf(m, "%s\n", saved_command_line);
 	return 0;
 }
 
@@ -48,8 +48,7 @@ static int __init proc_cmdline_init(void)
 
 		memmove(offset_addr, &cmd[offset + i + 1], len - i - offset);
 	}
-
 	proc_create("cmdline", 0, NULL, &cmdline_proc_fops);
 	return 0;
 }
-module_init(proc_cmdline_init);
+fs_initcall(proc_cmdline_init);
