@@ -16,7 +16,7 @@ DEFCONFIG="radioactive_defconfig"
 
 # Kernel Details
 BASE_RADIOACTIVE_VER="Radioactive-Reborn"
-VER="_V3.17"
+VER="_V3.20"
 RADIOACTIVE_VER="$BASE_RADIOACTIVE_VER$VER"
 
 # Vars
